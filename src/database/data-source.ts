@@ -1,15 +1,18 @@
 import "reflect-metadata";
 import { DataSource } from "typeorm";
-import { Pedido } from "./entity/Pedido";
 
 export const AppDataSource = new DataSource({
-  type: "sqlite",
-  database: "./src/database/database.sqlite3",
+  type: "postgres",
+  host: "localhost",
+  port: 5432,
+  database: "loja",
+  username: "postgres",
+  password: "admin",
   synchronize: true,
   logging: true,
-  entities: [Pedido],
-  subscribers: [],
-  migrations: ["./migrations"],
+  entities: ["./src/database/entity/*.ts"],
+  migrationsTableName: "migration_table",
+  migrations: ["./src/database/migrations/*.ts"],
 });
 
 AppDataSource.initialize()

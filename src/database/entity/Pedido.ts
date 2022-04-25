@@ -6,7 +6,7 @@ export class Pedido {
     id_pedido!: number
 
     @Column()
-    cliente_pedido!: string
+    id_cliente_pedido!: string
 
     @Column()
     description_pedido!: string
@@ -16,5 +16,8 @@ export class Pedido {
 
     @Column()
     date_created_pedido!: Date
+
+    @Column()
+    date_updated_pedido!: Date
 
 }
