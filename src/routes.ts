@@ -22,6 +22,7 @@ routes.put("/user", userController.update);
 routes.post("/login", userController.login);
 routes.post("/logout", userController.logout);
 routes.get("/loginusers", userController.usersLogados);
+routes.delete("/user/:id_user", userController.dropUser);
 
 routes.post("/items", itemController.create);
 routes.get("/items", itemController.find);
