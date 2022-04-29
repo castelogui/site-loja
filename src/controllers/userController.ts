@@ -20,20 +20,27 @@ class UserController {
       username,
     } = request.body;
 
-    user.first_name_user = first_name;
-    user.last_name_user = last_name;
-    user.type_user = type;
-    user.username_user = username;
-    user.password_user = password;
-    user.contato_user = contato;
-    user.endereco_user = endereco;
-    user.date_created_user = new Date();
-    user.date_updated_user = new Date();
-    user.filhos_user = "";
+    const user_registrado = await AppDataSource.getRepository(User)
+      .createQueryBuilder("user")
+      .where("user.username_user = :username", { username: username })
+      .getOne();
+    if (!user_registrado) {
+      user.first_name_user = first_name;
+      user.last_name_user = last_name;
+      user.type_user = type;
+      user.username_user = username;
+      user.password_user = password;
+      user.contato_user = contato;
+      user.endereco_user = endereco;
+      user.date_created_user = new Date();
+      user.date_updated_user = new Date();
+      user.filhos_user = "";
 
-    await AppDataSource.manager.save(user);
-
-    return response.json(user);
+      await AppDataSource.manager.save(user);
+      return response.json(user);
+    } else {
+      return response.json({ error: "username ja existe" });
+    }
   }
 
   async login(request: Request, response: Response) {
@@ -79,6 +86,37 @@ class UserController {
     return response.json(user);
   }
 
+  async dropUser(request: Request, response: Response) {
+    const id_user = request.params;
+
+    try {
+      const user = await AppDataSource.getRepository(User)
+        .createQueryBuilder("user")
+        .where("user.id_user = :id_user", id_user)
+        .getOne();
+
+      if (user) {
+        await AppDataSource.createQueryBuilder()
+          .delete()
+          .from(User)
+          .where("id_user = :id_user", id_user)
+          .execute();
+
+        return response.json("deleted sucess");
+      } else {
+        return response.json({
+          error: "error",
+          message: "user nao encontrado",
+        });
+      }
+    } catch (error) {
+      return response.json({
+        error: error,
+        message: "falha ao deletar usuario",
+      });
+    }
+  }
+
   async logout(request: Request, response: Response) {
     const { username } = request.body;
     try {
@@ -91,7 +129,7 @@ class UserController {
         await AppDataSource.createQueryBuilder()
           .delete()
           .from(Login)
-          .where("login.username_user = :username", { username: username })
+          .where("username_user = :username", { username: username })
           .execute();
         return response.json("logout sucess");
       } else {
