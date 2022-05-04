@@ -1,3 +1,3 @@
 import { app } from "./index";
 
-app.listen(3333, () => console.log("server is running"));
+app.listen(8888, () => console.log("server is running"));
