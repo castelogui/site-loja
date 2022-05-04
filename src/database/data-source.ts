@@ -3,11 +3,11 @@ import { DataSource } from "typeorm";
 
 export const AppDataSource = new DataSource({
   type: "postgres",
-  host: "localhost",
+  host: "ec2-3-211-6-217.compute-1.amazonaws.com",
   port: 5432,
-  database: "loja",
-  username: "postgres",
-  password: "admin",
+  database: "d1coq0t3mj0lpi",
+  username: "aoxmfikkdxxjou",
+  password: "ebec3ab69c01f09335f21da850f2943f1d5b8a10328b8ffb844e98394941d0cd",
   synchronize: true,
   logging: true,
   entities: ["./src/database/entity/*.ts"],
