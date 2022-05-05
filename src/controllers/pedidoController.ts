@@ -7,7 +7,7 @@ const querys = new Querys();
 
 class PedidoController {
   async home(request: Request, response: Response){
-    return response.json({message: 'server is running'})
+    return response.sendFile(process.cwd() + "../index.html");
   }
   async create(request: Request, response: Response) {
     const pedido = new Pedido();
