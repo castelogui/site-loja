@@ -2,7 +2,7 @@ import "reflect-metadata";
 import { DataSource } from "typeorm";
 
 export const AppDataSource = new DataSource({
-  /* type: "postgres",
+  type: "postgres",
   host: "localhost",
   port: 5432,
   database: "loja",
@@ -14,7 +14,7 @@ export const AppDataSource = new DataSource({
   entities: ["./src/database/entity/*.ts"],
   migrationsTableName: "migration_table",
   migrations: ["./src/database/migrations/*.ts"],
-   */type: "postgres",
+ /* type: "postgres",
   host: "ec2-3-211-6-217.compute-1.amazonaws.com",
   port: 5432,
   database: "d1coq0t3mj0lpi",
@@ -25,7 +25,7 @@ export const AppDataSource = new DataSource({
   logging: true,
   entities: ["./src/database/entity/*.ts"],
   migrationsTableName: "migration_table",
-  migrations: ["./src/database/migrations/*.ts"], 
+  migrations: ["./src/database/migrations/*.ts"],  */
 });
 
 AppDataSource.initialize()
