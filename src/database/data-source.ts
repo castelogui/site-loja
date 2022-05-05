@@ -8,6 +8,7 @@ export const AppDataSource = new DataSource({
   database: "d1coq0t3mj0lpi",
   username: "aoxmfikkdxxjou",
   password: "ebec3ab69c01f09335f21da850f2943f1d5b8a10328b8ffb844e98394941d0cd",
+  applicationName: "api-petiticos",
   synchronize: true,
   logging: true,
   entities: ["./src/database/entity/*.ts"],
