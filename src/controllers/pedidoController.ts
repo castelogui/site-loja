@@ -6,6 +6,9 @@ import Querys from "../database/querys";
 const querys = new Querys();
 
 class PedidoController {
+  async home(request: Request, response: Response){
+    return response.json({message: 'server is running'})
+  }
   async create(request: Request, response: Response) {
     const pedido = new Pedido();
 

@@ -11,6 +11,7 @@ const itemController = new ItemController();
 const routes = express.Router();
 
 routes.post("/", pedidoController.create);
+routes.get("/", )
 routes.get("/pedidos", pedidoController.buscar);
 routes.put("/pedidos", pedidoController.update);
 routes.delete("/pedidos", pedidoController.dropPedido);
