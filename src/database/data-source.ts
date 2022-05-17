@@ -7,7 +7,7 @@ export const AppDataSource = new DataSource({
   port: 5432,
   database: "loja",
   username: "postgres",
-  password: "postgres",
+  password: "admin",
   applicationName: "api-petiticos",
   synchronize: true,
   logging: true,
