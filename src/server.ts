@@ -1,3 +1,7 @@
 import { app } from "./index";
 
-app.listen(process.env.PORT || 8888, () => console.log("server is running port 8888"));
+const port = process.env.PORT || 8888;
+
+app.listen(port, () => {
+  console.log("server is running port 8888");
+});
